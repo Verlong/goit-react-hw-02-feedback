@@ -6,11 +6,11 @@ import Statistics from 'components/statistics/statistic';
 
 class FeedbackCounter extends React.Component {
   state = {
-    good: 1,
-    neutral: 2,
-    bad: 3,
-    total: 2,
-    percent: 10,
+    good: 0,
+    neutral: 0,
+    bad: 0,
+    total: 0,
+    percent: 0,
   };
 
   goodFeedbackClick = () => {
@@ -37,10 +37,20 @@ class FeedbackCounter extends React.Component {
     });
   };
 
-  // countTotalFeedback();
-  // countPositiveFeedbackPercentage();
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const total = this.countTotalFeedback();
+    return Math.round((good / total) * 100) || 0;
+  };
 
   render() {
+    const totalFeedbacks = this.countTotalFeedback();
+    const goodPercentage = this.countPositiveFeedbackPercentage();
     return (
       <div className={css.feedbackContainer}>
         <h3 className={css.feedbackTitle}>Please leave feedback</h3>
@@ -55,8 +65,8 @@ class FeedbackCounter extends React.Component {
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
-          total={this.state.total}
-          positivePercentage={this.state.percent}
+          total={totalFeedbacks}
+          positivePercentage={goodPercentage}
         />
       </div>
     );
