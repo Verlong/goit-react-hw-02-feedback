@@ -3,6 +3,7 @@ import React from 'react';
 import css from './feedback.module.css';
 import FeedbackOptions from './feedback-options';
 import Statistics from 'components/statistics/statistic';
+import NoFeedbackMessage from 'components/message/no-feedback-message';
 
 class FeedbackCounter extends React.Component {
   state = {
@@ -57,17 +58,20 @@ class FeedbackCounter extends React.Component {
 
         <FeedbackOptions
           onGood={this.goodFeedbackClick}
-          onNeurtal={this.neutralFeedbackClick}
+          onNeutral={this.neutralFeedbackClick}
           onBad={this.badFeedbackClick}
         />
-
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={totalFeedbacks}
-          positivePercentage={goodPercentage}
-        />
+        {totalFeedbacks !== 0 ? (
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={totalFeedbacks}
+            positivePercentage={goodPercentage}
+          />
+        ) : (
+          <NoFeedbackMessage message={'There is no feedback yet...'} />
+        )}
       </div>
     );
   }
