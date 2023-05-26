@@ -1,0 +1,96 @@
+.feedbackContainer {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  width: 280px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.feedbackTitle {
+  font-size: 24px;
+}
+
+.counterButtons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.counterButtons button {
+  padding: 10px 20px;
+  background-color: #4d4f50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.counterButtons button:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.counterButtons button:active {
+  transform: scale(0.9);
+}
+
+.goodButton:hover {
+  background-color: #28a745;
+}
+
+.neutralButton:hover {
+  background-color: #ffc107;
+}
+
+.badButton:hover {
+  background-color: #dc3545;
+}
+
+/* ///////////////////////////////////// */
+
+.statContaineer {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  width: 280px;
+  height: 420px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.statTitle {
+  font-size: 24px;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.statResults {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.statValue {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
