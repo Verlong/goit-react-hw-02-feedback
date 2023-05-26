@@ -1,6 +1,8 @@
 // import PropTypes from 'prop-types';
 import React from 'react';
 import css from './feedback.module.css';
+import FeedbackOptions from './feedback-options';
+import Statistics from 'components/statistics/statistic';
 
 class FeedbackCounter extends React.Component {
   state = {
@@ -8,10 +10,8 @@ class FeedbackCounter extends React.Component {
     neutral: 2,
     bad: 3,
     total: 2,
-    percent: 1,
+    percent: 10,
   };
-
-  // const totalFeedbacks = this.state.good + this.state.bad + this.state.neutral
 
   goodFeedbackClick = () => {
     this.setState(prevState => {
@@ -40,64 +40,24 @@ class FeedbackCounter extends React.Component {
   // countTotalFeedback();
   // countPositiveFeedbackPercentage();
 
-  //     totalFidbacks = () => {
-  //         this.setState(prevState => {
-  //             return {
-  //                 total: good + neutral + bad;
-  //       }})
-  //   };
-  //   positiveFidbackPercent = () => {this.setState(prevState => {
-  //             return {
-  //                 percent: (good + neutral + bad)*100/good;
-  //       }})};
-
   render() {
     return (
       <div className={css.feedbackContainer}>
         <h3 className={css.feedbackTitle}>Please leave feedback</h3>
-        <div className={css.counterButtons}>
-          <button
-            className={css.goodButton}
-            type="button"
-            onClick={this.goodFeedbackClick}
-          >
-            Good
-          </button>
-          <button
-            className={css.neutralButton}
-            type="button"
-            onClick={this.neutralFeedbackClick}
-          >
-            Neutral
-          </button>
-          <button
-            className={css.badButton}
-            type="button"
-            onClick={this.badFeedbackClick}
-          >
-            Bad
-          </button>
-        </div>
-        <h3 className={css.statTitle}>Statistic</h3>
-        <div className={css.statResults}>
-          <p className={css.statItem}>
-            Good:<span className={css.statValue}>{this.state.good}</span>
-          </p>
-          <p className={css.statItem}>
-            Neutral:<span className={css.statValue}>{this.state.neutral}</span>
-          </p>
-          <p className={css.statItem}>
-            Bad:<span className={css.statValue}>{this.state.bad}</span>
-          </p>
-          <p className={css.statItem}>
-            Total:
-            <span className={css.statValue}>{this.state.total}</span>
-          </p>
-          <p className={css.statItem}>
-            Positive feedback:
-            <span className={css.statValue}>{this.state.percent}</span>%
-          </p>
-        </div>
+
+        <FeedbackOptions
+          onGood={this.goodFeedbackClick}
+          onNeurtal={this.neutralFeedbackClick}
+          onBad={this.badFeedbackClick}
+        />
+
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.state.total}
+          positivePercentage={this.state.percent}
+        />
       </div>
     );
   }
