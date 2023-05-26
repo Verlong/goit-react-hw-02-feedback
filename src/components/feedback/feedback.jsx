@@ -10,8 +10,8 @@ class FeedbackCounter extends React.Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    total: 0,
-    percent: 0,
+    // total: 0,
+    // percent: 0,
   };
 
   goodFeedbackClick = () => {
@@ -52,6 +52,9 @@ class FeedbackCounter extends React.Component {
   render() {
     const totalFeedbacks = this.countTotalFeedback();
     const goodPercentage = this.countPositiveFeedbackPercentage();
+    const { good } = this.state;
+    const { neutral } = this.state;
+    const { bad } = this.state;
     return (
       <div className={css.feedbackContainer}>
         <h3 className={css.feedbackTitle}>Please leave feedback</h3>
@@ -63,9 +66,9 @@ class FeedbackCounter extends React.Component {
         />
         {totalFeedbacks !== 0 ? (
           <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             total={totalFeedbacks}
             positivePercentage={goodPercentage}
           />
